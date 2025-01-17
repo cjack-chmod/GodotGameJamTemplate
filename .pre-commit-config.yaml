@@ -1,0 +1,14 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+-   repo: https://github.com/Scony/godot-gdscript-toolkit/
+    rev: 4.2.2
+    hooks:
+    -   id: gdlint
+        additional_dependencies: ['setuptools']
+    -   id: gdformat
+        additional_dependencies: ['setuptools']
