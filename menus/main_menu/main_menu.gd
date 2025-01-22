@@ -49,9 +49,17 @@ func _on_secondary_menu_closed(menu_instance: Node) -> void:
 	margin_container.visible = true
 
 
-# TODO fix : if options is open and then controls opened, escape closes both
 # closes secondary menus using escape key
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		# if current focus is secondary menu
 		if current_focus != self:
+			# if is options menu
+			if "is_control_menu_open" in current_focus:
+				# closing controls menu in options if open
+				if current_focus.is_control_menu_open:
+					current_focus.on_controls_closed(current_focus.controls_instance)
+					return
+
+			# else close secondary menu
 			_on_secondary_menu_closed(current_focus)

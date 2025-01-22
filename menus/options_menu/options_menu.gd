@@ -4,6 +4,9 @@ signal sig_back_pressed
 
 const CONTROLS: PackedScene = preload("res://menus/controls/controls.tscn")
 
+var controls_instance: CanvasLayer
+var is_control_menu_open: bool = false
+
 @onready var window_button: Button = $%WindowButton
 @onready var sfx_slider: HSlider = %SfxSlider
 @onready var music_slider: HSlider = %MusicSlider
@@ -38,13 +41,15 @@ func _set_bus_volume_percent(bus_name: String, percent: float) -> void:
 
 
 func _on_controls_pressed() -> void:
-	var controls_instance: CanvasLayer = CONTROLS.instantiate()
+	is_control_menu_open = true
+	controls_instance = CONTROLS.instantiate()
 	add_child(controls_instance)
-	controls_instance.sig_back_pressed.connect(_on_controls_closed.bind(controls_instance))
+	controls_instance.sig_back_pressed.connect(on_controls_closed.bind(controls_instance))
 
 
-func _on_controls_closed(controls_instance: Node) -> void:
-	controls_instance.queue_free()
+func on_controls_closed(_controls_instance: Node) -> void:
+	is_control_menu_open = false
+	_controls_instance.queue_free()
 
 
 func _on_window_button_pressed() -> void:
