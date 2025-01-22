@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://biaw2dhkxcbqx"]
+
+[ext_resource type="Script" path="res://globals/screen_transition/screen_transition.gd" id="1_6dj4j"]
+
+[sub_resource type="Animation" id="Animation_8b14c"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_sicxc"]
+resource_name = "default"
+length = 0.41
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.41),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_sig_transitioned_halfway"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bno2x"]
+_data = {
+"RESET": SubResource("Animation_8b14c"),
+"default": SubResource("Animation_sicxc")
+}
+
+[node name="ScreenTransition" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_6dj4j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_bno2x")
+}
