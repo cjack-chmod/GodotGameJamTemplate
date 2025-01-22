@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_play_pressed() -> void:
 	# set any starting conditions here
 	ScreenTransition.transition_to_scene(ScreenTransition.main_scene_file_path)
-	
+
 
 func _on_credits_pressed() -> void:
 	margin_container.visible = false

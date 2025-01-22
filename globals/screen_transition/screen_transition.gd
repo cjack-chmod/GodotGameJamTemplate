@@ -2,9 +2,9 @@ extends CanvasLayer
 
 signal sig_transitioned_halfway
 
-var _skip_emit: bool = false
+var main_scene_file_path: String = "res://entities/levels/main.tscn"
 
-var main_scene_file_path : String = "res://entities/levels/main.tscn"
+var _skip_emit: bool = false
 
 
 func _transition() -> void:

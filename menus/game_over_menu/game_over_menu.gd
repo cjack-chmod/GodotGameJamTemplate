@@ -5,7 +5,6 @@ const OPTIONS_MENU: PackedScene = preload("res://menus/options_menu/options_menu
 @onready var panel_container: PanelContainer = $MarginContainer/PanelContainer
 
 
-
 func _ready() -> void:
 	get_tree().paused = true
 	panel_container.pivot_offset = panel_container.size / 2
