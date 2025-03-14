@@ -6,6 +6,10 @@ const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/op
 
 
 func _ready() -> void:
+	%OptionsButton.pressed.connect(_on_options_pressed)
+	%RestartButton.pressed.connect(_on_restart_pressed)
+	%QuitButton.pressed.connect(_on_quit_pressed)
+
 	get_tree().paused = true
 	panel_container.pivot_offset = panel_container.size / 2
 	var tween: Tween = create_tween()
