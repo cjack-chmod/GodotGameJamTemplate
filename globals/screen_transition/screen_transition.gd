@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal sig_transitioned_halfway
 
-var main_scene_file_path: String = "res://entities/levels/main.tscn"
+var main_scene_file_path: String = "res://scenes/levels/main.tscn"
 
 var _skip_emit: bool = false
 

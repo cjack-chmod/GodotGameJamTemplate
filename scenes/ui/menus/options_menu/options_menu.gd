@@ -2,7 +2,7 @@ extends CanvasLayer
 
 signal sig_back_pressed
 
-const CONTROLS: PackedScene = preload("res://menus/controls/controls.tscn")
+const CONTROLS: PackedScene = preload("res://scenes/ui/menus/controls/controls.tscn")
 
 var controls_instance: CanvasLayer
 var is_control_menu_open: bool = false

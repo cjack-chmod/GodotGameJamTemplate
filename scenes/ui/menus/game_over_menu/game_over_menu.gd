@@ -1,11 +1,15 @@
 extends CanvasLayer
 
-const OPTIONS_MENU: PackedScene = preload("res://menus/options_menu/options_menu.tscn")
+const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/options_menu.tscn")
 
 @onready var panel_container: PanelContainer = $MarginContainer/PanelContainer
 
 
 func _ready() -> void:
+	%OptionsButton.pressed.connect(_on_options_pressed)
+	%RestartButton.pressed.connect(_on_restart_pressed)
+	%QuitButton.pressed.connect(_on_quit_pressed)
+
 	get_tree().paused = true
 	panel_container.pivot_offset = panel_container.size / 2
 	var tween: Tween = create_tween()
@@ -38,7 +42,7 @@ func _on_quit_pressed() -> void:
 	get_tree().paused = false
 	self.hide()
 	call_deferred("queue_free")
-	ScreenTransition.transition_to_scene("res://menus/main_menu/main_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/main_menu/main_menu.tscn")
 
 
 func _on_options_closed(options_instance: Node) -> void:

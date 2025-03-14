@@ -1,6 +1,6 @@
 extends Node2D
 
-const PAUSE_MENU: PackedScene = preload("res://menus/pause_menu/pause_menu.tscn")
+const PAUSE_MENU: PackedScene = preload("res://scenes/ui/menus/pause_menu/pause_menu.tscn")
 
 
 func _input(event: InputEvent) -> void:

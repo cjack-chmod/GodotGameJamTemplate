@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const OPTIONS_MENU: PackedScene = preload("res://menus/options_menu/options_menu.tscn")
+const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/options_menu.tscn")
 
 var is_closing: bool
 
@@ -76,7 +76,7 @@ func _on_restart_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
-	ScreenTransition.transition_to_scene("res://menus/main_menu/main_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/menus/main_menu/main_menu.tscn")
 
 
 func _on_options_closed(options_instance: Node) -> void:

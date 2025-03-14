@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-const OPTIONS_MENU: PackedScene = preload("res://menus/options_menu/options_menu.tscn")
-const CREDITS: PackedScene = preload("res://menus/credits/credits.tscn")
+const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/options_menu.tscn")
+const CREDITS: PackedScene = preload("res://scenes/ui/menus/credits/credits.tscn")
 
 @onready var current_focus: Node = self
 @onready var margin_container: MarginContainer = $MarginContainer
