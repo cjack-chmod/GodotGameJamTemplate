@@ -11,17 +11,23 @@ config_version=5
 [application]
 
 config/name="GameJamTemplate"
-run/main_scene="res://menus/main_menu/main_menu.tscn"
+run/main_scene="res://scenes/ui/menus/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://common/assets/sprites/icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://resources/default_bus_layout.tres"
+buses/default_bus_layout="res://common/resources/default_bus_layout.tres"
 
 [autoload]
 
 ScreenTransition="*res://globals/screen_transition/screen_transition.tscn"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+gdscript/warnings/inferred_declaration=2
+gdscript/warnings/return_value_discarded=1
 
 [input]
 

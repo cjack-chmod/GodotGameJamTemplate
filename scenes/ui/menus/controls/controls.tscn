@@ -1,10 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfqha1mc55unb"]
+[gd_scene load_steps=2 format=3 uid="uid://b3ah88w3ylst4"]
 
-[ext_resource type="Script" uid="uid://vsjb4vpatu6g" path="res://menus/back.gd" id="1_w58b8"]
+[ext_resource type="Script" uid="uid://vsjb4vpatu6g" path="res://scenes/ui/menus/back.gd" id="1_3ts0u"]
 
 [node name="Credits" type="CanvasLayer"]
 layer = 2
-script = ExtResource("1_w58b8")
+script = ExtResource("1_3ts0u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
