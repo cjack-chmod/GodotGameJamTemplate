@@ -33,6 +33,7 @@ Below is a suggested example file structure (which is currently used for the men
 - The repository includes a basic main menu / set of menu loops.
 - You can modify these within the `scenes/ui/menus` directory.
 - A main scene and script are already established to start prototyping out of.
+- Some basic options like volume sliders and full screen are also preconfigured.
 - For code consistency you can enable pre_commit linting if you are interested.
     - See [pre_commit](https://pre-commit.com/)
     - See [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit/tree/master)
