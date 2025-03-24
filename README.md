@@ -19,7 +19,7 @@ This repository serves as a starting point for game jam projects using Godot. It
 
 Below is a suggested example file structure (which is currently used for the menus).
 
-![alt text](image.png)
+![alt text](common/assets/sprites/image.png)
 
 ## Setup
 
