@@ -17,43 +17,9 @@ This repository serves as a starting point for game jam projects using Godot. It
 
 ## File Structure
 
-Below is a suggested file structure (which is currently used for the menus).
+Below is a suggested example file structure (which is currently used for the menus).
 
-res://
-├── common/
-│   ├── assets/
-│   │   ├── art/
-│   │   │   ├── sprites/
-│   │   │   │   ├── enemies
-│   │   │   │   ├── environment
-│   │   │   │   └── player
-│   │   │   ├── masks
-│   │   │   └── tiles
-│   │   └── sound/
-│   │       ├── music
-│   │       └── sfx
-│   └── resources/
-│       ├── tilesets/
-│       └── audio_buses/
-├── globals/
-│   ├── scenes
-│   └── scripts
-└── scenes/
-├── components
-├── controllers
-├── effects
-├── entities/
-│   ├── enemies
-│   ├── environment
-│   ├── items
-│   └── player
-├── levels
-├── main
-├── ui/
-│   └── menus/
-│       └── endpoints
-├── test_area
-└── tools
+![alt text](image.png)
 
 ## Setup
 
