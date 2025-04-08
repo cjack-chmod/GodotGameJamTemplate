@@ -7,10 +7,10 @@ const CONTROLS: PackedScene = preload("res://scenes/ui/menus/controls/controls.t
 var controls_instance: CanvasLayer
 var is_control_menu_open: bool = false
 
-@onready var window_button: Button = $%WindowButton
+@onready var window_button: Button = %WindowButton
 @onready var sfx_slider: HSlider = %SfxSlider
 @onready var music_slider: HSlider = %MusicSlider
-@onready var back_button: Button = $%BackButton
+@onready var back_button: Button = %BackButton
 @onready var controls: Button = %Controls
 
 

@@ -8,10 +8,10 @@ const CREDITS: PackedScene = preload("res://scenes/ui/menus/credits/credits.tscn
 
 
 func _ready() -> void:
-	$%PlayButton.pressed.connect(_on_play_pressed)
-	$%OptionsButton.pressed.connect(_on_options_pressed)
-	$%QuitButton.pressed.connect(_on_quit_pressed)
-	$%CreditsButton.pressed.connect(_on_credits_pressed)
+	%PlayButton.pressed.connect(_on_play_pressed)
+	%OptionsButton.pressed.connect(_on_options_pressed)
+	%QuitButton.pressed.connect(_on_quit_pressed)
+	%CreditsButton.pressed.connect(_on_credits_pressed)
 
 
 # launces main scene defined in ScreenTransition
