@@ -8,10 +8,10 @@ const CREDITS: PackedScene = preload("res://scenes/ui/menus/credits/credits.tscn
 
 
 func _ready() -> void:
-	$%PlayButton.pressed.connect(_on_play_pressed)
-	$%OptionsButton.pressed.connect(_on_options_pressed)
-	$%QuitButton.pressed.connect(_on_quit_pressed)
-	$%CreditsButton.pressed.connect(_on_credits_pressed)
+	%PlayButton.pressed.connect(_on_play_pressed)
+	%OptionsButton.pressed.connect(_on_options_pressed)
+	%QuitButton.pressed.connect(_on_quit_pressed)
+	%CreditsButton.pressed.connect(_on_credits_pressed)
 
 
 # launces main scene defined in ScreenTransition
@@ -26,7 +26,7 @@ func _on_credits_pressed() -> void:
 	var credits_instance: CanvasLayer = CREDITS.instantiate()
 	add_child(credits_instance)
 	current_focus = credits_instance
-	credits_instance.sig_back_pressed.connect(_on_secondary_menu_closed.bind(credits_instance))
+	credits_instance.sig_back_pressed.connect(_close_secondary_menu.bind(credits_instance))
 
 
 # launches options menu, and binds back key to close fnc
@@ -35,7 +35,7 @@ func _on_options_pressed() -> void:
 	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
 	add_child(options_instance)
 	current_focus = options_instance
-	options_instance.sig_back_pressed.connect(_on_secondary_menu_closed.bind(options_instance))
+	options_instance.sig_back_pressed.connect(_close_secondary_menu.bind(options_instance))
 
 
 func _on_quit_pressed() -> void:
@@ -43,7 +43,7 @@ func _on_quit_pressed() -> void:
 
 
 # closes the passed in secondary menu
-func _on_secondary_menu_closed(menu_instance: Node) -> void:
+func _close_secondary_menu(menu_instance: Node) -> void:
 	current_focus = self
 	menu_instance.queue_free()
 	margin_container.visible = true
@@ -62,4 +62,4 @@ func _input(event: InputEvent) -> void:
 					return
 
 			# else close secondary menu
-			_on_secondary_menu_closed(current_focus)
+			_close_secondary_menu(current_focus)

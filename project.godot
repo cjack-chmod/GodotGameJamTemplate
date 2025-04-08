@@ -27,7 +27,6 @@ ScreenTransition="*res://globals/screen_transition/screen_transition.tscn"
 
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
-gdscript/warnings/return_value_discarded=1
 
 [input]
 
