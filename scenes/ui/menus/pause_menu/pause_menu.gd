@@ -3,6 +3,7 @@ extends CanvasLayer
 const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/options_menu.tscn")
 
 var is_closing: bool
+var parent_scene_mouse_mode: Input.MouseMode = Input.MouseMode.MOUSE_MODE_VISIBLE
 
 @onready var current_focus: Node = self
 @onready var panel_container: PanelContainer = $MarginContainer/PanelContainer
@@ -36,7 +37,7 @@ func _input(event: InputEvent) -> void:
 		if current_focus == self:
 			_close()
 			get_tree().root.set_input_as_handled()
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			Input.mouse_mode = parent_scene_mouse_mode
 		else:
 			# if is options menu
 			if "is_control_menu_open" in current_focus:
@@ -60,7 +61,7 @@ func _close() -> void:
 	if is_closing:
 		return
 
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = parent_scene_mouse_mode
 	is_closing = true
 
 	var tween: Tween = create_tween()
