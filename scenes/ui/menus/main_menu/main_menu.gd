@@ -4,7 +4,7 @@ const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/op
 const CREDITS: PackedScene = preload("res://scenes/ui/menus/credits/credits.tscn")
 
 @onready var current_focus: Node = self
-@onready var margin_container: MarginContainer = $MarginContainer
+@onready var container: Container = $MarginContainer
 
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func _on_play_pressed() -> void:
 
 # launches credits menu, and binds back key to close fnc
 func _on_credits_pressed() -> void:
-	margin_container.visible = false
+	container.visible = false
 	var credits_instance: CanvasLayer = CREDITS.instantiate()
 	add_child(credits_instance)
 	current_focus = credits_instance
@@ -31,7 +31,7 @@ func _on_credits_pressed() -> void:
 
 # launches options menu, and binds back key to close fnc
 func _on_options_pressed() -> void:
-	margin_container.visible = false
+	container.visible = false
 	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
 	add_child(options_instance)
 	current_focus = options_instance
@@ -46,7 +46,7 @@ func _on_quit_pressed() -> void:
 func _close_secondary_menu(menu_instance: Node) -> void:
 	current_focus = self
 	menu_instance.queue_free()
-	margin_container.visible = true
+	container.visible = true
 
 
 # closes secondary menus using escape key
