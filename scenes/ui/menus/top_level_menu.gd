@@ -71,12 +71,14 @@ func _escape_pressed() -> void:
 # used to close secondary menus
 func _escape_pressed_with_secondary_menu_open() -> void:
 	# closing controls menu in options if open
-	if current_focus.is_control_menu_open:
-		current_focus.on_controls_closed(current_focus.controls_instance)
-	# else close secondary menu
-	else:
-		_close_secondary_menu(current_focus)
+	if "is_control_menu_open" in current_focus:
+		if current_focus.is_control_menu_open:
+			current_focus.on_controls_closed(current_focus.controls_instance)
+			get_tree().root.set_input_as_handled()
+			return
 
+	# else close secondary menu
+	_close_secondary_menu(current_focus)
 	get_tree().root.set_input_as_handled()
 
 
@@ -84,6 +86,6 @@ func _escape_pressed_with_secondary_menu_open() -> void:
 func _instantiate_secondary_menu(menu_scene: PackedScene) -> void:
 	var menu_instance: CanvasLayer = menu_scene.instantiate()
 	container.visible = false
-	current_focus = menu_instance
 	add_child(menu_instance)
+	current_focus = menu_instance
 	menu_instance.sig_back_pressed.connect(_close_secondary_menu.bind(menu_instance))
