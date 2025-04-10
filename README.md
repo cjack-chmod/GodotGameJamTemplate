@@ -37,6 +37,8 @@ Below is a suggested example file structure (which is currently used for the men
 - For code consistency you can enable pre_commit linting / formatting if you are interested.
     - See [pre_commit](https://pre-commit.com/)
     - See [gdtoolkit](https://github.com/Scony/godot-gdscript-toolkit/tree/master)
+- In main.gd there is a signal to call the game over screen, which can be modified / moved as needed.
+    - *sig_game_over*
 
 ## Contributing
 

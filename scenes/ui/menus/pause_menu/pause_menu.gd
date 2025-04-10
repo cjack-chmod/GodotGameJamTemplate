@@ -1,60 +1,36 @@
-extends CanvasLayer
-
-const OPTIONS_MENU: PackedScene = preload("res://scenes/ui/menus/options_menu/options_menu.tscn")
-const MAIN_MENU_SCENE_PATH: String = "res://scenes/ui/menus/main_menu/main_menu.tscn"
+extends TopLevelMenu
 
 var is_closing: bool
 var parent_scene_mouse_mode: Input.MouseMode = Input.MouseMode.MOUSE_MODE_VISIBLE
 
-@onready var current_focus: Node = self
-@onready var container: Container = $MarginContainer/PanelContainer
-@onready var resume_button: Button = %ResumeButton
-@onready var options_button: Button = %OptionsButton
-@onready var quit_button: Button = %QuitButton
-@onready var restart_button: Button = %RestartButton
-
 
 func _ready() -> void:
+	super()
 	get_tree().paused = true
-	container.pivot_offset = container.size / 2
-	resume_button.pressed.connect(_on_resume_pressed)
-	options_button.pressed.connect(_on_options_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
-	restart_button.pressed.connect(_on_restart_pressed)
 
-	var tween: Tween = create_tween()
-	tween.tween_property(container, "scale", Vector2.ZERO, 0)
-	tween.tween_property(container, "scale", Vector2.ONE, .3).set_ease(Tween.EASE_OUT).set_trans(
-		Tween.TRANS_BACK
-	)
+	# connecting buttons
+	%ResumeButton.pressed.connect(_on_resume_pressed)
+	%OptionsButton.pressed.connect(_on_options_pressed)
+	%QuitButton.pressed.connect(_on_quit_pressed)
+	%RestartButton.pressed.connect(_on_restart_pressed)
+
+	_transition_in()
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		# closes pause menu
-		if current_focus == self:
-			_close()
-			get_tree().root.set_input_as_handled()
-			Input.mouse_mode = parent_scene_mouse_mode
-		else:
-			# if is options menu
-			if "is_control_menu_open" in current_focus:
-				# closing controls menu in options if open
-				if current_focus.is_control_menu_open:
-					current_focus.on_controls_closed(current_focus.controls_instance)
-					return
-
-			# else close secondary menu
-			_close_secondary_menu(current_focus)
+##############################
+# Menu Closing Functions
+##############################
 
 
-# closes the passed in secondary menu
-func _close_secondary_menu(menu_instance: Node) -> void:
-	current_focus = self
-	menu_instance.queue_free()
-	container.visible = true
+# redefining this function as it is different from the others
+# and does nothing in the parent class
+func _escape_pressed() -> void:
+	super()
+	_close()
 
 
+# function that closes the paused menu
+# called when escape key presssed or when resume button is pressed
 func _close() -> void:
 	if is_closing:
 		return
@@ -62,15 +38,14 @@ func _close() -> void:
 	Input.mouse_mode = parent_scene_mouse_mode
 	is_closing = true
 
-	var tween: Tween = create_tween()
-	tween.tween_property(container, "scale", Vector2.ONE, 0)
-	tween.tween_property(container, "scale", Vector2.ZERO, .3).set_ease(Tween.EASE_IN).set_trans(
-		Tween.TRANS_BACK
-	)
-
-	await tween.finished
+	await _transition_out()
 	get_tree().paused = false
 	queue_free()
+
+
+##############################
+# Button Press Functions
+##############################
 
 
 func _on_resume_pressed() -> void:
@@ -78,17 +53,12 @@ func _on_resume_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
-	container.visible = false
-	current_focus = options_instance
-	add_child(options_instance)
-	options_instance.sig_back_pressed.connect(_close_secondary_menu.bind(options_instance))
+	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_restart_pressed() -> void:
-	var scene: String = get_parent().scene_file_path
 	get_tree().paused = false
-	ScreenTransition.transition_to_scene(scene)
+	ScreenTransition.transition_to_scene(ScreenTransition.main_scene_file_path)
 
 
 func _on_quit_pressed() -> void:
