@@ -29,6 +29,8 @@ func _escape_pressed() -> void:
 	_close()
 
 
+# function that closes the paused menu
+# called when escape key presssed or when resume button is pressed
 func _close() -> void:
 	if is_closing:
 		return
@@ -51,17 +53,12 @@ func _on_resume_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
-	container.visible = false
-	current_focus = options_instance
-	add_child(options_instance)
-	options_instance.sig_back_pressed.connect(_close_secondary_menu.bind(options_instance))
+	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_restart_pressed() -> void:
-	var scene: String = get_parent().scene_file_path
 	get_tree().paused = false
-	ScreenTransition.transition_to_scene(scene)
+	ScreenTransition.transition_to_scene(ScreenTransition.main_scene_file_path)
 
 
 func _on_quit_pressed() -> void:

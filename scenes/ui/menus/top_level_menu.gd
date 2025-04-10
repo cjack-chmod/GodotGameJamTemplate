@@ -78,3 +78,12 @@ func _escape_pressed_with_secondary_menu_open() -> void:
 		_close_secondary_menu(current_focus)
 
 	get_tree().root.set_input_as_handled()
+
+
+# function for standard process of instantiating secondary menu
+func _instantiate_secondary_menu(menu_scene: PackedScene) -> void:
+	var menu_instance: CanvasLayer = menu_scene.instantiate()
+	container.visible = false
+	current_focus = menu_instance
+	add_child(menu_instance)
+	menu_instance.sig_back_pressed.connect(_close_secondary_menu.bind(menu_instance))

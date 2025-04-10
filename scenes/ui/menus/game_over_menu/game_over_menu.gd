@@ -17,11 +17,7 @@ func _ready() -> void:
 
 
 func _on_options_pressed() -> void:
-	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
-	current_focus = options_instance
-	container.visible = false
-	add_child(options_instance)
-	options_instance.sig_back_pressed.connect(_close_secondary_menu.bind(options_instance))
+	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_restart_pressed() -> void:

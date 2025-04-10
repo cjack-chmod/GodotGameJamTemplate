@@ -24,21 +24,13 @@ func _on_play_pressed() -> void:
 
 # launches credits menu, and binds back key to close fnc
 func _on_credits_pressed() -> void:
-	container.visible = false
 	var credits_scene: PackedScene = load(CREDITS_SCENE_PATH)
-	var credits_instance: CanvasLayer = credits_scene.instantiate()
-	add_child(credits_instance)
-	current_focus = credits_instance
-	credits_instance.sig_back_pressed.connect(_close_secondary_menu.bind(credits_instance))
+	_instantiate_secondary_menu(credits_scene)
 
 
 # launches options menu, and binds back key to close fnc
 func _on_options_pressed() -> void:
-	container.visible = false
-	var options_instance: CanvasLayer = OPTIONS_MENU.instantiate()
-	add_child(options_instance)
-	current_focus = options_instance
-	options_instance.sig_back_pressed.connect(_close_secondary_menu.bind(options_instance))
+	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_quit_pressed() -> void:
