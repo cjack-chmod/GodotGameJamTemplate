@@ -25,9 +25,8 @@ func _ready() -> void:
 # redefining this function as it is different from the others
 # and does nothing in the parent class
 func _escape_pressed() -> void:
+	super()
 	_close()
-	get_tree().root.set_input_as_handled()
-	Input.mouse_mode = parent_scene_mouse_mode
 
 
 func _close() -> void:

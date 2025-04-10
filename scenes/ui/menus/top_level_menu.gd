@@ -63,15 +63,18 @@ func _transition_out() -> void:
 	await tween.finished
 
 
+# overwritten in pause only, as only it uses this
 func _escape_pressed() -> void:
-	pass
+	get_tree().root.set_input_as_handled()
 
 
+# used to close secondary menus
 func _escape_pressed_with_secondary_menu_open() -> void:
 	# closing controls menu in options if open
 	if current_focus.is_control_menu_open:
 		current_focus.on_controls_closed(current_focus.controls_instance)
-		return
-
 	# else close secondary menu
-	_close_secondary_menu(current_focus)
+	else:
+		_close_secondary_menu(current_focus)
+
+	get_tree().root.set_input_as_handled()
