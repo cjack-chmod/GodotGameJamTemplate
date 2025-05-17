@@ -21,6 +21,10 @@ var current_filename: String = get_logfilename()
 var logfile: FileAccess
 var message_amount: int = 0
 
+# change this if you want to suppress messages in console
+# to focus on print statements for debugging
+var print_messages_to_console : bool = true
+
 #################################################
 # Setup
 #################################################
@@ -93,7 +97,7 @@ func _log(level: String, message: String, flush: bool = false) -> void:
 		_flush()
 
 	# Output to stdout
-	if OS.is_debug_build():
+	if OS.is_debug_build() and print_messages_to_console:
 		print(log_message)
 
 
