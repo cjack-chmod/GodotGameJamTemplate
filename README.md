@@ -14,6 +14,7 @@ This repository serves as a starting point for game jam projects using Godot. It
 - Basic main menu with functionality to start the game or exit.
 - Pre-configured file structure for quick development.
 - Easily customizable for different game jam themes and styles.
+- A global logging system that will print to console and to log files. See globals/logger/logger.gd, for usage, docs etc.
 
 ## File Structure
 

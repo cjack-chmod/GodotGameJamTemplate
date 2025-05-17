@@ -17,10 +17,12 @@ func _ready() -> void:
 
 
 func _on_options_pressed() -> void:
+	Logger.info("Options opened")
 	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_restart_pressed() -> void:
+	Logger.info("Restarting game")
 	get_tree().paused = false
 	self.hide()
 	call_deferred("queue_free")
@@ -28,6 +30,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
+	Logger.info("Quitting Game")
 	get_tree().paused = false
 	self.hide()
 	call_deferred("queue_free")
