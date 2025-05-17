@@ -11,7 +11,7 @@ const LOGFILE_AMOUNT: int = 10
 const LOGFILE_PATH: String = "user://logs/logger-%s.log"
 
 # Message format options
-const FORMAT: String = "%s - %s - %s"
+const FORMAT: String = "(%s) %s - %s - %s"
 const DEBUG: String = "Debug"
 const INFO: String = "Info"
 const WARNING: String = "Warning"
@@ -23,7 +23,7 @@ var message_amount: int = 0
 
 # change this if you want to suppress messages in console
 # to focus on print statements for debugging
-var print_messages_to_console : bool = true
+var print_messages_to_console: bool = true
 
 #################################################
 # Setup
@@ -86,9 +86,10 @@ func _format_time() -> String:
 	return "[%02d:%02d:%02d]" % [time.hour, time.minute, time.second]
 
 
-# TODO look at using get_stack() to print file and function name the call is coming from
 func _log(level: String, message: String, flush: bool = false) -> void:
-	var log_message: String = FORMAT % [_format_time(), level, message]
+	var stack : Array = get_stack()
+	var function: String = stack[2].source.split('/')[-1] + ' : ' +  stack[2].function
+	var log_message: String = FORMAT % [function, _format_time(), level, message]
 
 	logfile.store_line(log_message)
 	message_amount += 1
