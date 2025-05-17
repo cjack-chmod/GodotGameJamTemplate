@@ -41,6 +41,7 @@ func _set_bus_volume_percent(bus_name: String, percent: float) -> void:
 
 
 func _on_controls_pressed() -> void:
+	Logger.info("Controls button pressed")
 	is_control_menu_open = true
 	controls_instance = CONTROLS.instantiate()
 	add_child(controls_instance)
@@ -48,6 +49,7 @@ func _on_controls_pressed() -> void:
 
 
 func on_controls_closed(_controls_instance: Node) -> void:
+	Logger.info("Closing controls")
 	is_control_menu_open = false
 	_controls_instance.queue_free()
 
@@ -64,8 +66,10 @@ func _on_window_button_pressed() -> void:
 
 
 func _on_audio_slider_changed(value: float, bus_name: String) -> void:
+	Logger.info("Volume slider updated")
 	_set_bus_volume_percent(bus_name, value)
 
 
 func _on_back_button_pressed() -> void:
+	Logger.info("Back button pressed")
 	sig_back_pressed.emit()

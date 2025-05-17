@@ -28,6 +28,7 @@ func _ready() -> void:
 # escape button handling
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		Logger.info("Escape pressed")
 		# closes pause menu
 		if current_focus == self:
 			_escape_pressed()

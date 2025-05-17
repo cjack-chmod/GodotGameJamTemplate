@@ -10,4 +10,5 @@ func _ready() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	Logger.info("Back button pressed")
 	sig_back_pressed.emit()
