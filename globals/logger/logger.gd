@@ -87,8 +87,8 @@ func _format_time() -> String:
 
 
 func _log(level: String, message: String, flush: bool = false) -> void:
-	var stack : Array = get_stack()
-	var function: String = stack[2].source.split('/')[-1] + ' : ' +  stack[2].function
+	var stack: Array = get_stack()
+	var function: String = stack[2].source.split("/")[-1] + " : " + stack[2].function
 	var log_message: String = FORMAT % [function, _format_time(), level, message]
 
 	logfile.store_line(log_message)
