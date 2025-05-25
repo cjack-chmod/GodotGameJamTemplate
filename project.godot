@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="GameJamTemplate"
+config/tags=PackedStringArray("currentproject")
 run/main_scene="res://scenes/ui/menus/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://common/assets/sprites/icon.svg"
@@ -29,6 +30,10 @@ ScreenTransition="*res://globals/screen_transition/screen_transition.tscn"
 file_logging/enable_file_logging.pc=false
 gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_plushie_viewport_pet/plugin.cfg")
 
 [input]
 
