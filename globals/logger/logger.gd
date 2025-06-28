@@ -42,7 +42,6 @@ func get_logfilename() -> String:
 		var filename: String = LOGFILE_PATH % [index]
 
 		if not FileAccess.file_exists(filename):
-			print("not exists")
 			logfilename = filename
 			break
 
