@@ -31,8 +31,7 @@ var print_messages_to_console: bool = true
 
 
 func _init() -> void:
-	logfile = FileAccess.open(current_filename, FileAccess.WRITE)
-
+	logfile = ensure_logfile(current_filename)
 
 func get_logfilename() -> String:
 	var logfilename: String
@@ -42,6 +41,7 @@ func get_logfilename() -> String:
 		var filename: String = LOGFILE_PATH % [index]
 
 		if not FileAccess.file_exists(filename):
+			print('not exists')
 			logfilename = filename
 			break
 
@@ -50,8 +50,26 @@ func get_logfilename() -> String:
 		if modified_time < last_modified_time or last_modified_time == 0:
 			last_modified_time = modified_time
 			logfilename = filename
-
 	return logfilename
+
+
+func ensure_logfile(filename: String) -> FileAccess:
+	var dir : String = filename.get_base_dir()
+
+	# Ensure the directory exists
+	if not DirAccess.dir_exists_absolute(dir):
+		var err : int = DirAccess.make_dir_recursive_absolute(dir)
+		if err != OK:
+			push_error("Failed to create log directory: " + dir)
+			return null
+
+	# Try to open the file for writing
+	var file : FileAccess = FileAccess.open(filename, FileAccess.WRITE)
+	if file == null:
+		push_error("Failed to open file for writing: " + filename)
+	else:
+		file.store_line("Log started: " + Time.get_datetime_string_from_system())
+	return file
 
 
 #################################################
