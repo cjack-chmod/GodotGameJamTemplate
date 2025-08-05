@@ -45,6 +45,7 @@ func _on_controls_pressed() -> void:
 	is_control_menu_open = true
 	controls_instance = CONTROLS.instantiate()
 	add_child(controls_instance)
+	controls.z_index = 3
 	controls_instance.sig_back_pressed.connect(on_controls_closed.bind(controls_instance))
 
 
