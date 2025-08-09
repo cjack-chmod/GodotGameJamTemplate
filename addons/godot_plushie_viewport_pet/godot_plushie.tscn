@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=3 uid="uid://j7nlt5y4v70i"]
 
-[ext_resource type="Texture2D" uid="uid://c7ae1663txkl2" path="res://addons/godot_plushie_viewport_pet/sprites/spr_idle.png" id="1_08pc8"]
-[ext_resource type="Texture2D" uid="uid://5tbcq4n7u1b0" path="res://addons/godot_plushie_viewport_pet/sprites/spr_run.png" id="2_3cgmu"]
-[ext_resource type="Texture2D" uid="uid://dfqqtot4xw258" path="res://addons/godot_plushie_viewport_pet/sprites/spr_snooze.png" id="3_ymno5"]
+[ext_resource type="Texture2D" path="res://addons/godot_plushie_viewport_pet/sprites/spr_idle.png" id="1_08pc8"]
+[ext_resource type="Texture2D" path="res://addons/godot_plushie_viewport_pet/sprites/spr_run.png" id="2_3cgmu"]
+[ext_resource type="Texture2D" path="res://addons/godot_plushie_viewport_pet/sprites/spr_snooze.png" id="3_ymno5"]
 [ext_resource type="Script" path="res://addons/godot_plushie_viewport_pet/godot_plushie.gd" id="4_jnhgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gsduy"]
