@@ -1,6 +1,6 @@
 extends Node
 
-# after how many log messages the logger will flush memory,
+# after how many log messages the CustomLogger will flush memory,
 # close file, and reopen
 const FLUSH_EVERY: float = 100
 # max number of log files. If 10 already exist it will overwrite the latest one
@@ -73,7 +73,7 @@ func ensure_logfile(filename: String) -> FileAccess:
 
 
 #################################################
-# Logger functions, call Logger.<fnc_name> to use
+# CustomLogger functions, call CustomLogger.<fnc_name> to use
 #################################################
 
 

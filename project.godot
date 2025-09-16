@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="GameJamTemplate"
-config/tags=PackedStringArray("currentproject")
+config/tags=PackedStringArray("currentproject", "template")
 run/main_scene="res://scenes/ui/menus/main_menu/main_menu.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://common/assets/sprites/icon.svg"
 
 [audio]
@@ -22,8 +22,8 @@ buses/default_bus_layout="res://common/resources/default_bus_layout.tres"
 
 [autoload]
 
-Logger="*res://globals/logger/logger.gd"
 ScreenTransition="*res://globals/screen_transition/screen_transition.tscn"
+CustomLogger="*res://globals/logger/logger.gd"
 
 [debug]
 

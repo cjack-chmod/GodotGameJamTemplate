@@ -12,7 +12,7 @@ const GAME_OVER_MENU_PATH: String = "res://scenes/ui/menus/game_over_menu/game_o
 
 
 func _ready() -> void:
-	Logger.info("Main Scene Starting")
+	CustomLogger.info("Main Scene Starting")
 	# enables the mouse mode given in export
 	Input.mouse_mode = scene_mouse_mode
 	sig_game_over.connect(game_over)
@@ -21,7 +21,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	# this code sets what is needed to pause the game
 	if event.is_action_pressed("pause"):
-		Logger.info("Pause input detected")
+		CustomLogger.info("Pause input detected")
 		_pause_game()
 
 
@@ -37,7 +37,7 @@ func _pause_game() -> void:
 # this function calls the game over functionality
 # call the sig_game_over signal to trigger. You can modify or move this as required
 func game_over() -> void:
-	Logger.info("Game over called. Loading menu")
+	CustomLogger.info("Game over called. Loading menu")
 	var game_over_menu: PackedScene = load(GAME_OVER_MENU_PATH)
 	var game_over_menu_object: CanvasLayer = game_over_menu.instantiate()
 	add_child(game_over_menu_object)

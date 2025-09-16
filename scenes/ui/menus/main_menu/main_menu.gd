@@ -18,24 +18,24 @@ func _ready() -> void:
 
 # launces main scene defined in ScreenTransition
 func _on_play_pressed() -> void:
-	Logger.info("Play game button pressed")
+	CustomLogger.info("Play game button pressed")
 	# set any starting conditions here
 	ScreenTransition.transition_to_scene(ScreenTransition.main_scene_file_path)
 
 
 # launches credits menu, and binds back key to close fnc
 func _on_credits_pressed() -> void:
-	Logger.info("Credits button pressed")
+	CustomLogger.info("Credits button pressed")
 	var credits_scene: PackedScene = load(CREDITS_SCENE_PATH)
 	_instantiate_secondary_menu(credits_scene)
 
 
 # launches options menu, and binds back key to close fnc
 func _on_options_pressed() -> void:
-	Logger.info("Options button Pressed")
+	CustomLogger.info("Options button Pressed")
 	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_quit_pressed() -> void:
-	Logger.info("Quit button pressed")
+	CustomLogger.info("Quit button pressed")
 	get_tree().quit()

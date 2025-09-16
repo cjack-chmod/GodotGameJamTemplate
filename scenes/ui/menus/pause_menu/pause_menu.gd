@@ -35,7 +35,7 @@ func _close() -> void:
 	if is_closing:
 		return
 
-	Logger.info("Closing pause menu")
+	CustomLogger.info("Closing pause menu")
 	Input.mouse_mode = parent_scene_mouse_mode
 	is_closing = true
 
@@ -50,22 +50,22 @@ func _close() -> void:
 
 
 func _on_resume_pressed() -> void:
-	Logger.info("Resume button pressed")
+	CustomLogger.info("Resume button pressed")
 	_close()
 
 
 func _on_options_pressed() -> void:
-	Logger.info("Options button pressed")
+	CustomLogger.info("Options button pressed")
 	_instantiate_secondary_menu(OPTIONS_MENU)
 
 
 func _on_restart_pressed() -> void:
-	Logger.info("Restart button pressed")
+	CustomLogger.info("Restart button pressed")
 	get_tree().paused = false
 	ScreenTransition.transition_to_scene(ScreenTransition.main_scene_file_path)
 
 
 func _on_quit_pressed() -> void:
-	Logger.info("Quit to main menu pressed")
+	CustomLogger.info("Quit to main menu pressed")
 	get_tree().paused = false
 	ScreenTransition.transition_to_scene(MAIN_MENU_SCENE_PATH)
